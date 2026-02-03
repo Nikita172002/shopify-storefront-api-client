@@ -1,0 +1,40 @@
+info:
+  version: '1.0.0'
+  title: 'Shopify Storefront API Types'
+
+groupedTypes:
+  Common:
+    $ref: './types/common.yaml#/Common'
+
+  Products:
+    $ref: './types/products.yaml#/Products'
+
+  Collections:
+    $ref: './types/collections.yaml#/Collections'
+
+  Cart:
+    $ref: './types/cart.yaml#/Cart'
+
+  Customer:
+    $ref: './types/customer.yaml#/Customer'
+
+  Search:
+    $ref: './types/search.yaml#/Search'
+
+  Content:
+    $ref: './types/content.yaml#/Content'
+
+  Metafields:
+    $ref: './types/metafields.yaml#/Metafields'
+
+  Localization:
+    $ref: './types/localization.yaml#/Localization'
+
+  Shop:
+    $ref: './types/shop.yaml#/Shop'
+
+  Errors:
+    $ref: './types/errors.yaml#/Errors'
+
+  Responses:
+    $ref: './types/responses.yaml#/Responses'
