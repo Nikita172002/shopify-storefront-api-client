@@ -14,10 +14,10 @@ export async function testContentApi() {
     const result = await client.content.pages.getMany({ first: 5 });
     assertNotNull(result instanceof APISuccess ? result.response : null, 'Should return pages');
     const pages = (result as APISuccess<typeof result.response>).response!;
-    assertNotNull(pages.edges, 'Should have edges array');
+    assertNotNull(pages.nodes, 'Should have edges array');
     
-    if (pages.edges.length > 0) {
-      testPageHandle = pages.edges[0].node.handle;
+    if (pages.nodes.length > 0) {
+      testPageHandle = pages.nodes[0].handle;
     }
   });
 
@@ -27,8 +27,7 @@ export async function testContentApi() {
     assertNotNull(result instanceof APISuccess ? result.response : null, 'Should return pages');
     const pages = (result as APISuccess<typeof result.response>).response!;
     
-    for (const edge of pages.edges) {
-      const p = edge.node;
+    for (const p of pages.nodes) {
       assertNotNull(p.id, 'Page should have id');
       assertNotNull(p.title, 'Page should have title');
       assertNotNull(p.handle, 'Page should have handle');
@@ -69,10 +68,10 @@ export async function testContentApi() {
     const result = await client.content.blogs.getMany({ first: 5 });
     assertNotNull(result instanceof APISuccess ? result.response : null, 'Should return blogs');
     const blogs = (result as APISuccess<typeof result.response>).response!;
-    assertNotNull(blogs.edges, 'Should have edges array');
+    assertNotNull(blogs.nodes, 'Should have edges array');
     
-    if (blogs.edges.length > 0) {
-      testBlogHandle = blogs.edges[0].node.handle;
+    if (blogs.nodes.length > 0) {
+      testBlogHandle = blogs.nodes[0].handle;
     }
   });
 
@@ -82,8 +81,7 @@ export async function testContentApi() {
     assertNotNull(result instanceof APISuccess ? result.response : null, 'Should return blogs');
     const blogs = (result as APISuccess<typeof result.response>).response!;
     
-    for (const edge of blogs.edges) {
-      const b = edge.node;
+    for (const b of blogs.nodes) {
       assertNotNull(b.id, 'Blog should have id');
       assertNotNull(b.title, 'Blog should have title');
       assertNotNull(b.handle, 'Blog should have handle');
@@ -128,10 +126,10 @@ export async function testContentApi() {
     const result = await client.content.articles.getMany({ first: 5 });
     assertNotNull(result instanceof APISuccess ? result.response : null, 'Should return articles');
     const articles = (result as APISuccess<typeof result.response>).response!;
-    assertNotNull(articles.edges, 'Should have edges array');
+    assertNotNull(articles.nodes, 'Should have edges array');
     
-    if (articles.edges.length > 0) {
-      testArticleId = articles.edges[0].node.id;
+    if (articles.nodes.length > 0) {
+      testArticleId = articles.nodes[0].id;
     }
   });
 

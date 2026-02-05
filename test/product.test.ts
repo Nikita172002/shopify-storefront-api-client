@@ -13,12 +13,12 @@ export async function testProductApi() {
     const result = await client.product.getMany({ first: 5 });
     assertNotNull(result instanceof APISuccess ? result.response : null, 'Should return products');
     const products = (result as APISuccess<typeof result.response>).response;
-    assertNotNull(products.edges, 'Should have edges array');
+    assertNotNull(products.nodes, 'Should have nodes array');
     assertNotNull(products.pageInfo, 'Should have page info');
-    
-    if (products.edges.length > 0) {
-      testProductId = products.edges[0].node.id;
-      testProductHandle = products.edges[0].node.handle;
+
+    if (products.nodes.length > 0) {
+      testProductId = products.nodes[0].id;
+      testProductHandle = products.nodes[0].handle;
     }
   });
 
@@ -27,9 +27,8 @@ export async function testProductApi() {
     const result = await client.product.getMany({ first: 3 });
     assertNotNull(result instanceof APISuccess ? result.response : null, 'Should return products');
     const products = (result as APISuccess<typeof result.response>).response;
-    
-    for (const edge of products.edges) {
-      const p = edge.node;
+
+    for (const p of products.nodes) {
       assertNotNull(p.id, 'Product should have id');
       assertNotNull(p.title, 'Product should have title');
       assertNotNull(p.handle, 'Product should have handle');
@@ -84,7 +83,7 @@ export async function testProductApi() {
       });
       assertNotNull(result instanceof APISuccess ? result.response : null, 'Should return sorted products');
       const products = (result as APISuccess<typeof result.response>).response;
-      assertNotNull(products.edges, 'Should have edges');
+      assertNotNull(products.nodes, 'Should have nodes');
     }, [`sortKey=${sortKey}`, 'reverse=false']);
   }
 

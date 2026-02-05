@@ -185,7 +185,7 @@ Metafields:
     type: object
     description: 'Paginated list of metafield references'
     required:
-      - edges
+      - nodes
     properties:
       edges:
         type: array
@@ -285,7 +285,7 @@ Metafields:
     type: object
     description: 'Paginated list of metaobjects'
     required:
-      - edges
+      - nodes
       - pageInfo
     properties:
       edges:

@@ -24,10 +24,10 @@ export async function testMetaobjectApi() {
         const response = (result as APISuccess<typeof result.response>).response;
         
         // Store first found type for subsequent tests
-        if (response.edges.length > 0 && !foundType) {
+        if (response.nodes.length > 0 && !foundType) {
           foundType = type;
-          foundHandle = response.edges[0].node.handle;
-          foundId = response.edges[0].node.id;
+          foundHandle = response.nodes[0].handle;
+          foundId = response.nodes[0].id;
         }
       },
       [`type=${type}`]

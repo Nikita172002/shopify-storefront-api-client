@@ -11,9 +11,9 @@ export async function testCartApi() {
   // Setup: Get a product variant for cart tests
   const productsResult = await client.product.getMany({ first: 5 });
   if (productsResult instanceof APISuccess) {
-    for (const edge of productsResult.response.edges) {
-      if (edge.node.variants?.edges && edge.node.variants.edges.length > 0) {
-        variantId = edge.node.variants.edges[0].node.id;
+    for (const product of productsResult.response.nodes) {
+      if (product.variants?.nodes && product.variants.nodes.length > 0) {
+        variantId = product.variants.nodes[0].id;
         break;
       }
     }
@@ -67,9 +67,9 @@ export async function testCartApi() {
     assertNotNull(cartResult.cart, 'Should return cart');
     cartId = cartResult.cart!.id;
     
-    const lines = cartResult.cart!.lines?.edges ?? [];
+    const lines = cartResult.cart!.lines?.nodes ?? [];
     if (lines.length > 0) {
-      lineItemId = lines[0].node.id;
+      lineItemId = lines[0].id;
     }
   }, ['lines=initial']);
 

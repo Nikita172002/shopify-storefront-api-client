@@ -133,7 +133,12 @@ export type PageConnection = {
    * @type { PageEdge[] }
    * @memberof PageConnection
   */
-  edges: PageEdge[];
+  edges: PageEdge[] | null;
+    /**
+   * @type { Page[] }
+   * @memberof PageConnection
+  */
+  nodes: Page[];
   /**
    * @type { PageInfo }
    * @memberof PageConnection
@@ -144,10 +149,11 @@ export type PageConnection = {
 export function decodePageConnection(rawInput: unknown): PageConnection | null {
   if (isJSON(rawInput)) {
     const decodedEdges = decodeArray(rawInput['edges'], decodePageEdge);
+    const decodedNodes = decodeArray(rawInput['nodes'], decodePage);
     const decodedPageInfo = decodePageInfo(rawInput['pageInfo']);
 
     if (
-      decodedEdges === null ||
+      decodedNodes === null ||
       decodedPageInfo === null
     ) {
       return null;
@@ -155,6 +161,7 @@ export function decodePageConnection(rawInput: unknown): PageConnection | null {
 
     return {
       edges: decodedEdges,
+      nodes: decodedNodes,
       pageInfo: decodedPageInfo
     };
   }
@@ -306,7 +313,12 @@ export type BlogConnection = {
    * @type { BlogEdge[] }
    * @memberof BlogConnection
   */
-  edges: BlogEdge[];
+  edges: BlogEdge[] | null;
+    /**
+   * @type { Blog[] }
+   * @memberof BlogConnection
+  */
+  nodes: Blog[];
   /**
    * @type { PageInfo }
    * @memberof BlogConnection
@@ -317,10 +329,11 @@ export type BlogConnection = {
 export function decodeBlogConnection(rawInput: unknown): BlogConnection | null {
   if (isJSON(rawInput)) {
     const decodedEdges = decodeArray(rawInput['edges'], decodeBlogEdge);
+    const decodedNodes = decodeArray(rawInput['nodes'], decodeBlog);
     const decodedPageInfo = decodePageInfo(rawInput['pageInfo']);
 
     if (
-      decodedEdges === null ||
+      decodedNodes === null ||
       decodedPageInfo === null
     ) {
       return null;
@@ -328,6 +341,7 @@ export function decodeBlogConnection(rawInput: unknown): BlogConnection | null {
 
     return {
       edges: decodedEdges,
+      nodes: decodedNodes,
       pageInfo: decodedPageInfo
     };
   }
@@ -642,7 +656,12 @@ export type ArticleConnection = {
    * @type { ArticleEdge[] }
    * @memberof ArticleConnection
   */
-  edges: ArticleEdge[];
+  edges: ArticleEdge[] | null;
+    /**
+   * @type { Article[] }
+   * @memberof ArticleConnection
+  */
+  nodes: Article[];
   /**
    * @type { PageInfo }
    * @memberof ArticleConnection
@@ -653,10 +672,11 @@ export type ArticleConnection = {
 export function decodeArticleConnection(rawInput: unknown): ArticleConnection | null {
   if (isJSON(rawInput)) {
     const decodedEdges = decodeArray(rawInput['edges'], decodeArticleEdge);
+    const decodedNodes = decodeArray(rawInput['nodes'], decodeArticle);
     const decodedPageInfo = decodePageInfo(rawInput['pageInfo']);
 
     if (
-      decodedEdges === null ||
+      decodedNodes === null ||
       decodedPageInfo === null
     ) {
       return null;
@@ -664,6 +684,7 @@ export function decodeArticleConnection(rawInput: unknown): ArticleConnection | 
 
     return {
       edges: decodedEdges,
+      nodes: decodedNodes,
       pageInfo: decodedPageInfo
     };
   }

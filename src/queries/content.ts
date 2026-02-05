@@ -134,11 +134,8 @@ export const GET_PAGES: string = `
       sortKey: $sortKey
       query: $query
     ) {
-      edges {
-        node {
-          ...PageFields
-        }
-        cursor
+      nodes {
+        ...PageFields
       }
       pageInfo {
         hasNextPage
@@ -191,11 +188,8 @@ export const GET_BLOGS: string = `
       sortKey: $sortKey
       query: $query
     ) {
-      edges {
-        node {
-          ...BlogFields
-        }
-        cursor
+      nodes {
+        ...BlogFields
       }
       pageInfo {
         hasNextPage
@@ -228,11 +222,8 @@ export const GET_BLOG_WITH_ARTICLES: string = `
         reverse: $articlesReverse
         sortKey: $articlesSortKey
       ) {
-        edges {
-          node {
-            ...ArticleFields
-          }
-          cursor
+        nodes {
+          ...ArticleFields
         }
         pageInfo {
           hasNextPage
@@ -278,11 +269,8 @@ export const GET_ARTICLES: string = `
       sortKey: $sortKey
       query: $query
     ) {
-      edges {
-        node {
-          ...ArticleFields
-        }
-        cursor
+      nodes {
+        ...ArticleFields
       }
       pageInfo {
         hasNextPage

@@ -557,7 +557,7 @@ Products:
     type: object
     description: 'Paginated list of product variants'
     required:
-      - edges
+      - nodes
       - pageInfo
     properties:
       edges:
@@ -587,7 +587,7 @@ Products:
     type: object
     description: 'Paginated list of products'
     required:
-      - edges
+      - nodes
       - pageInfo
     properties:
       edges:
@@ -622,7 +622,7 @@ Products:
     type: object
     description: 'Paginated list of images'
     required:
-      - edges
+      - nodes
       - pageInfo
     properties:
       edges:

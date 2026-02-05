@@ -67,23 +67,21 @@ export const PRODUCT_FRAGMENT: string = `
       ...ImageFields
     }
     images(first: 10) {
-      edges {
-        node {
-          ...ImageFields
-        }
+      nodes {
+        ...ImageFields
       }
     }
     options {
       id
       name
-      values
+      optionValues {
+        id
+        name
+      }
     }
     variants(first: 100) {
-      edges {
-        node {
-          ...ProductVariantFields
-        }
-        cursor
+      nodes {
+        ...ProductVariantFields
       }
       pageInfo {
         hasNextPage
@@ -143,11 +141,8 @@ export const GET_PRODUCTS: string = `
       sortKey: $sortKey
       query: $query
     ) {
-      edges {
-        node {
-          ...ProductFields
-        }
-        cursor
+      nodes {
+        ...ProductFields
       }
       pageInfo {
         hasNextPage

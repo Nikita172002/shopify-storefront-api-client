@@ -1526,13 +1526,13 @@ export type ProductVariantConnection = {
    * @type { ProductVariantEdge[] }
    * @memberof ProductVariantConnection
   */
-  edges: ProductVariantEdge[];
-  /**
+  edges: ProductVariantEdge[] | null;
+    /**
    * @type { ProductVariant[] }
    * @memberof ProductVariantConnection
   */
-  nodes: ProductVariant[] | null;
-    /**
+  nodes: ProductVariant[];
+  /**
    * @type { PageInfo }
    * @memberof ProductVariantConnection
   */
@@ -1546,7 +1546,7 @@ export function decodeProductVariantConnection(rawInput: unknown): ProductVarian
     const decodedPageInfo = decodePageInfo(rawInput['pageInfo']);
 
     if (
-      decodedEdges === null ||
+      decodedNodes === null ||
       decodedPageInfo === null
     ) {
       return null;
@@ -1609,13 +1609,13 @@ export type ProductConnection = {
    * @type { ProductEdge[] }
    * @memberof ProductConnection
   */
-  edges: ProductEdge[];
-  /**
+  edges: ProductEdge[] | null;
+    /**
    * @type { Product[] }
    * @memberof ProductConnection
   */
-  nodes: Product[] | null;
-    /**
+  nodes: Product[];
+  /**
    * @description Available filters for products
    * @type { Filter[] }
    * @memberof ProductConnection
@@ -1636,7 +1636,7 @@ export function decodeProductConnection(rawInput: unknown): ProductConnection | 
     const decodedPageInfo = decodePageInfo(rawInput['pageInfo']);
 
     if (
-      decodedEdges === null ||
+      decodedNodes === null ||
       decodedPageInfo === null
     ) {
       return null;
@@ -1700,13 +1700,13 @@ export type ImageConnection = {
    * @type { ImageEdge[] }
    * @memberof ImageConnection
   */
-  edges: ImageEdge[];
-  /**
+  edges: ImageEdge[] | null;
+    /**
    * @type { Image[] }
    * @memberof ImageConnection
   */
-  nodes: Image[] | null;
-    /**
+  nodes: Image[];
+  /**
    * @type { PageInfo }
    * @memberof ImageConnection
   */
@@ -1720,7 +1720,7 @@ export function decodeImageConnection(rawInput: unknown): ImageConnection | null
     const decodedPageInfo = decodePageInfo(rawInput['pageInfo']);
 
     if (
-      decodedEdges === null ||
+      decodedNodes === null ||
       decodedPageInfo === null
     ) {
       return null;

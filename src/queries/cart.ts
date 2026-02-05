@@ -108,10 +108,8 @@ export const CART_FRAGMENT: string = `
       }
     }
     lines(first: 100) {
-      edges {
-        node {
-          ...CartLineFields
-        }
+      nodes {
+        ...CartLineFields
       }
     }
   }

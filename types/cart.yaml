@@ -481,7 +481,7 @@ Cart:
     type: object
     description: 'Paginated list of cart lines (BaseCartLine)'
     required:
-      - edges
+      - nodes
     properties:
       edges:
         type: array
@@ -509,7 +509,7 @@ Cart:
     type: object
     description: 'Paginated list of cart lines'
     required:
-      - edges
+      - nodes
     properties:
       edges:
         type: array

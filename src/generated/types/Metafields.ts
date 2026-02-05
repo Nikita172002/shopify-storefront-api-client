@@ -517,13 +517,13 @@ export type MetafieldReferenceConnection = {
    * @type { MetafieldReferenceEdge[] }
    * @memberof MetafieldReferenceConnection
   */
-  edges: MetafieldReferenceEdge[];
-  /**
+  edges: MetafieldReferenceEdge[] | null;
+    /**
    * @type { MetafieldReference[] }
    * @memberof MetafieldReferenceConnection
   */
-  nodes: MetafieldReference[] | null;
-    /**
+  nodes: MetafieldReference[];
+  /**
    * @type { PageInfo }
    * @memberof MetafieldReferenceConnection
   */
@@ -537,7 +537,7 @@ export function decodeMetafieldReferenceConnection(rawInput: unknown): Metafield
     const decodedPageInfo = decodePageInfo(rawInput['pageInfo']);
 
     if (
-      decodedEdges === null
+      decodedNodes === null
     ) {
       return null;
     }
@@ -786,13 +786,13 @@ export type MetaobjectConnection = {
    * @type { MetaobjectEdge[] }
    * @memberof MetaobjectConnection
   */
-  edges: MetaobjectEdge[];
-  /**
+  edges: MetaobjectEdge[] | null;
+    /**
    * @type { Metaobject[] }
    * @memberof MetaobjectConnection
   */
-  nodes: Metaobject[] | null;
-    /**
+  nodes: Metaobject[];
+  /**
    * @type { PageInfo }
    * @memberof MetaobjectConnection
   */
@@ -806,7 +806,7 @@ export function decodeMetaobjectConnection(rawInput: unknown): MetaobjectConnect
     const decodedPageInfo = decodePageInfo(rawInput['pageInfo']);
 
     if (
-      decodedEdges === null ||
+      decodedNodes === null ||
       decodedPageInfo === null
     ) {
       return null;

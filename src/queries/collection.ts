@@ -75,17 +75,13 @@ export const COLLECTION_PRODUCT_FRAGMENT: string = `
       ...ImageFields
     }
     images(first: 5) {
-      edges {
-        node {
-          ...ImageFields
-        }
+      nodes {
+        ...ImageFields
       }
     }
     variants(first: 10) {
-      edges {
-        node {
-          ...ProductVariantFields
-        }
+      nodes {
+        ...ProductVariantFields
       }
     }
   }
@@ -140,11 +136,8 @@ export const GET_COLLECTION_WITH_PRODUCTS: string = `
         sortKey: $sortKey
         filters: $filters
       ) {
-        edges {
-          node {
-            ...ProductFields
-          }
-          cursor
+        nodes {
+          ...ProductFields
         }
         pageInfo {
           hasNextPage
@@ -189,11 +182,8 @@ export const GET_COLLECTIONS: string = `
       sortKey: $sortKey
       query: $query
     ) {
-      edges {
-        node {
-          ...CollectionFields
-        }
-        cursor
+      nodes {
+        ...CollectionFields
       }
       pageInfo {
         hasNextPage

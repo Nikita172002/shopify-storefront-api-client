@@ -1360,13 +1360,13 @@ export type BaseCartLineConnection = {
    * @type { BaseCartLineEdge[] }
    * @memberof BaseCartLineConnection
   */
-  edges: BaseCartLineEdge[];
-  /**
+  edges: BaseCartLineEdge[] | null;
+    /**
    * @type { CartLine[] }
    * @memberof BaseCartLineConnection
   */
-  nodes: CartLine[] | null;
-    /**
+  nodes: CartLine[];
+  /**
    * @type { PageInfo }
    * @memberof BaseCartLineConnection
   */
@@ -1380,7 +1380,7 @@ export function decodeBaseCartLineConnection(rawInput: unknown): BaseCartLineCon
     const decodedPageInfo = decodePageInfo(rawInput['pageInfo']);
 
     if (
-      decodedEdges === null
+      decodedNodes === null
     ) {
       return null;
     }
@@ -1441,13 +1441,13 @@ export type CartLineConnection = {
    * @type { CartLineEdge[] }
    * @memberof CartLineConnection
   */
-  edges: CartLineEdge[];
-  /**
+  edges: CartLineEdge[] | null;
+    /**
    * @type { CartLine[] }
    * @memberof CartLineConnection
   */
-  nodes: CartLine[] | null;
-    /**
+  nodes: CartLine[];
+  /**
    * @type { PageInfo }
    * @memberof CartLineConnection
   */
@@ -1461,7 +1461,7 @@ export function decodeCartLineConnection(rawInput: unknown): CartLineConnection 
     const decodedPageInfo = decodePageInfo(rawInput['pageInfo']);
 
     if (
-      decodedEdges === null
+      decodedNodes === null
     ) {
       return null;
     }

@@ -82,13 +82,13 @@ export type SearchResultItemConnection = {
    * @type { SearchResultItemEdge[] }
    * @memberof SearchResultItemConnection
   */
-  edges: SearchResultItemEdge[];
-  /**
+  edges: SearchResultItemEdge[] | null;
+    /**
    * @type { SearchResultItem[] }
    * @memberof SearchResultItemConnection
   */
-  nodes: SearchResultItem[] | null;
-    /**
+  nodes: SearchResultItem[];
+  /**
    * @type { PageInfo }
    * @memberof SearchResultItemConnection
   */
@@ -111,7 +111,7 @@ export function decodeSearchResultItemConnection(rawInput: unknown): SearchResul
 
     if (
       decodedTotalCount === null ||
-      decodedEdges === null ||
+      decodedNodes === null ||
       decodedPageInfo === null
     ) {
       return null;

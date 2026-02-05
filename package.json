@@ -1,6 +1,6 @@
 {
   "name": "shopify-storefront-api-client",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Strongly typed TypeScript SDK for Shopify Storefront GraphQL API",
   "type": "module",
   "main": "./dist/index.cjs",

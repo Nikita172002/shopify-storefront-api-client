@@ -140,13 +140,13 @@ export type CollectionConnection = {
    * @type { CollectionEdge[] }
    * @memberof CollectionConnection
   */
-  edges: CollectionEdge[];
-  /**
+  edges: CollectionEdge[] | null;
+    /**
    * @type { Collection[] }
    * @memberof CollectionConnection
   */
-  nodes: Collection[] | null;
-    /**
+  nodes: Collection[];
+  /**
    * @type { PageInfo }
    * @memberof CollectionConnection
   */
@@ -167,7 +167,7 @@ export function decodeCollectionConnection(rawInput: unknown): CollectionConnect
     const decodedTotalCount = decodeNumber(rawInput['totalCount']);
 
     if (
-      decodedEdges === null ||
+      decodedNodes === null ||
       decodedPageInfo === null
     ) {
       return null;

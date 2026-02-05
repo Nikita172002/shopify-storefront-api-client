@@ -13,12 +13,12 @@ export async function testCollectionApi() {
     const result = await client.collection.getMany({ first: 5 });
     assertNotNull(result instanceof APISuccess ? result.response : null, 'Should return collections');
     const collections = (result as APISuccess<typeof result.response>).response;
-    assertNotNull(collections.edges, 'Should have edges array');
+    assertNotNull(collections.nodes, 'Should have edges array');
     assertNotNull(collections.pageInfo, 'Should have pageInfo');
     
-    if (collections.edges.length > 0) {
-      testCollectionId = collections.edges[0].node.id;
-      testCollectionHandle = collections.edges[0].node.handle;
+    if (collections.nodes.length > 0) {
+      testCollectionId = collections.nodes[0].id;
+      testCollectionHandle = collections.nodes[0].handle;
     }
   });
 
@@ -28,8 +28,7 @@ export async function testCollectionApi() {
     assertNotNull(result instanceof APISuccess ? result.response : null, 'Should return collections');
     const collections = (result as APISuccess<typeof result.response>).response;
     
-    for (const edge of collections.edges) {
-      const c = edge.node;
+    for (const c of collections.nodes) {
       assertNotNull(c.id, 'Collection should have id');
       assertNotNull(c.title, 'Collection should have title');
       assertNotNull(c.handle, 'Collection should have handle');

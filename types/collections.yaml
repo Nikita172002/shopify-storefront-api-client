@@ -58,7 +58,7 @@ Collections:
     type: object
     description: 'Paginated list of collections'
     required:
-      - edges
+      - nodes
       - pageInfo
     properties:
       edges:

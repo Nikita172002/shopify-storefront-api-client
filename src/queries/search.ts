@@ -35,14 +35,12 @@ export const SEARCH_PRODUCT_FRAGMENT: string = `
       ...ImageFields
     }
     variants(first: 5) {
-      edges {
-        node {
-          id
-          title
-          availableForSale
-          price {
-            ...MoneyFields
-          }
+      nodes {
+        id
+        title
+        availableForSale
+        price {
+          ...MoneyFields
         }
       }
     }
@@ -126,20 +124,17 @@ export const SEARCH: string = `
       prefix: $prefix
       unavailableProducts: $unavailableProducts
     ) {
-      edges {
-        node {
-          __typename
-          ... on Product {
-            ...SearchProductFields
-          }
-          ... on Page {
-            ...SearchPageFields
-          }
-          ... on Article {
-            ...SearchArticleFields
-          }
+      nodes {
+        __typename
+        ... on Product {
+          ...SearchProductFields
         }
-        cursor
+        ... on Page {
+          ...SearchPageFields
+        }
+        ... on Article {
+          ...SearchArticleFields
+        }
       }
       pageInfo {
         hasNextPage

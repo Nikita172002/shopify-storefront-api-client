@@ -37,38 +37,36 @@ export const METAOBJECT_FIELD_FRAGMENT: string = `
       }
     }
     references(first: 10) {
-      edges {
-        node {
-          __typename
-          ... on Product {
-            id
-            handle
-            title
+      nodes {
+        __typename
+        ... on Product {
+          id
+          handle
+          title
+        }
+        ... on Collection {
+          id
+          handle
+          title
+        }
+        ... on Page {
+          id
+          handle
+          title
+        }
+        ... on MediaImage {
+          id
+          image {
+            url
+            altText
+            width
+            height
           }
-          ... on Collection {
-            id
-            handle
-            title
-          }
-          ... on Page {
-            id
-            handle
-            title
-          }
-          ... on MediaImage {
-            id
-            image {
-              url
-              altText
-              width
-              height
-            }
-          }
-          ... on Metaobject {
-            id
-            handle
-            type
-          }
+        }
+        ... on Metaobject {
+          id
+          handle
+          type
         }
       }
     }
@@ -129,11 +127,8 @@ export const GET_METAOBJECTS: string = `
       reverse: $reverse
       sortKey: $sortKey
     ) {
-      edges {
-        node {
-          ...MetaobjectFields
-        }
-        cursor
+      nodes {
+        ...MetaobjectFields
       }
       pageInfo {
         hasNextPage

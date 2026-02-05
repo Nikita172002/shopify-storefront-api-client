@@ -29,7 +29,7 @@ Search:
     description: 'Search results from a full-text search'
     required:
       - totalCount
-      - edges
+      - nodes
       - pageInfo
     properties:
       totalCount:

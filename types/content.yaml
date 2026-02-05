@@ -57,13 +57,17 @@ Content:
     type: object
     description: 'Paginated list of pages'
     required:
-      - edges
+      - nodes
       - pageInfo
     properties:
       edges:
         type: array
         items:
           $ref: './types/content.yaml#/Content/PageEdge'
+      nodes:
+        type: array
+        items:
+          $ref: './types/content.yaml#/Content/Page'
       pageInfo:
         $ref: './types/common.yaml#/Common/PageInfo'
 
@@ -123,13 +127,17 @@ Content:
     type: object
     description: 'Paginated list of blogs'
     required:
-      - edges
+      - nodes
       - pageInfo
     properties:
       edges:
         type: array
         items:
           $ref: './types/content.yaml#/Content/BlogEdge'
+      nodes:
+        type: array
+        items:
+          $ref: './types/content.yaml#/Content/Blog'
       pageInfo:
         $ref: './types/common.yaml#/Common/PageInfo'
 
@@ -244,13 +252,17 @@ Content:
     type: object
     description: 'Paginated list of articles'
     required:
-      - edges
+      - nodes
       - pageInfo
     properties:
       edges:
         type: array
         items:
           $ref: './types/content.yaml#/Content/ArticleEdge'
+      nodes:
+        type: array
+        items:
+          $ref: './types/content.yaml#/Content/Article'
       pageInfo:
         $ref: './types/common.yaml#/Common/PageInfo'
 

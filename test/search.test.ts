@@ -14,7 +14,7 @@ export async function testSearchApi() {
     assertNotNull(result instanceof APISuccess ? result.response : null, 'Should return search results');
     const search = (result as APISuccess<typeof result.response>).response;
     assertNotNull(search.totalCount !== undefined, 'Should have totalCount');
-    assertNotNull(search.edges, 'Should have edges array');
+    assertNotNull(search.nodes, 'Should have edges array');
   });
 
   // Test: Search with type filters - Product only
@@ -26,8 +26,8 @@ export async function testSearchApi() {
     });
     assertNotNull(result instanceof APISuccess ? result.response : null, 'Should return products');
     const search = (result as APISuccess<typeof result.response>).response;
-    for (const edge of search.edges) {
-      assert(edge.node.__typename === 'Product', 'All results should be products');
+    for (const item of search.nodes) {
+      assert(item.__typename === 'Product', 'All results should be products');
     }
   }, ['types=PRODUCT']);
 
@@ -40,8 +40,8 @@ export async function testSearchApi() {
     });
     assertNotNull(result instanceof APISuccess ? result.response : null, 'Should return pages');
     const search = (result as APISuccess<typeof result.response>).response;
-    for (const edge of search.edges) {
-      assert(edge.node.__typename === 'Page', 'All results should be pages');
+    for (const item of search.nodes) {
+      assert(item.__typename === 'Page', 'All results should be pages');
     }
   }, ['types=PAGE']);
 
@@ -65,7 +65,7 @@ export async function testSearchApi() {
     });
     assertNotNull(result instanceof APISuccess ? result.response : null, 'Should return mixed results');
     const search = (result as APISuccess<typeof result.response>).response;
-    assertNotNull(search.edges, 'Should have edges');
+    assertNotNull(search.nodes, 'Should have edges');
   }, ['types=PRODUCT,PAGE']);
 
   // Test combinations: Search sort keys
