@@ -25,6 +25,7 @@ import { createContentApi, type ContentApi } from "./remote/content";
 import { createMetaobjectApi, type MetaobjectApi } from "./remote/metaobject";
 
 export class StorefrontClient {
+  public readonly executor: Executor;
   public readonly product: ProductApi;
   public readonly cart: CartApi;
   public readonly collection: CollectionApi;
@@ -37,16 +38,16 @@ export class StorefrontClient {
 
   constructor(config: StorefrontConfig) {
     this.config = config;
-    const executor: Executor = createExecutor(config);
+    this.executor = createExecutor(config);
 
-    this.product = createProductApi(executor);
-    this.cart = createCartApi(executor);
-    this.collection = createCollectionApi(executor);
-    this.customer = createCustomerApi(executor);
-    this.shop = createShopApi(executor);
-    this.search = createSearchApi(executor);
-    this.content = createContentApi(executor);
-    this.metaobject = createMetaobjectApi(executor);
+    this.product = createProductApi(this.executor);
+    this.cart = createCartApi(this.executor);
+    this.collection = createCollectionApi(this.executor);
+    this.customer = createCustomerApi(this.executor);
+    this.shop = createShopApi(this.executor);
+    this.search = createSearchApi(this.executor);
+    this.content = createContentApi(this.executor);
+    this.metaobject = createMetaobjectApi(this.executor);
   }
 
   get endpoint(): string {
